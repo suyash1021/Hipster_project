@@ -10,10 +10,10 @@ export const themeMap = {
   },
   dark: {
     wrapper:
-      "bg-gray-900 text-white space-y-20 xl:ml-24 ml-10  font-serif font-bold min-h-screen xl:p-6 xl:w-full xl:flex",
+      "bg-gray-900 text-white space-y-20 xl:ml-24 ml-10  font-serif font-bold min-h-screen xl:p-6  ",
     header:
-      "bg-gray-800 shadow-lg text-white  w-1/5 min-h-screen p-4 fixed left-0 top-0",
-    content: "ml-[10%]  <p-4></p-4> ",
+      "bg-gray-800 shadow-lg text-white  w-1/5 min-h-screen  p-4 fixed left-0 top-0",
+    content: "ml-[10%]    p-4 ",
   },
   colorful: {
     wrapper: "bg-pink-100 text-pink-900 font-pacifico min-h-screen",
