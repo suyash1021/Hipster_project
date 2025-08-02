@@ -36,9 +36,7 @@ const About = () => {
   const IndexOfLastItem = currentPage * itemsPerPage;
   const IndexOfFirstItem = IndexOfLastItem - itemsPerPage;
 
-  const filterData = data
-    .filter(
-      (item) =>
+  const filterData = data?.filter((item) =>
         item.title.toLowerCase().includes(debounceSearch.toLowerCase()) ||
         item.description.toLowerCase().includes(debounceSearch.toLowerCase()) ||
         item.price
