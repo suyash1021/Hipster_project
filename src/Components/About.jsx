@@ -52,75 +52,82 @@ const About = () => {
     setCurrentPage(page);
   };
   return (
-    <div className="min-h-screen p-6">
-      <div className="flex justify-center mb-6">
-        <h1 className="text-4xl font-semibold text-gray-800">Table Data</h1>
+  
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8 ">
+      <div className="text-center mb-6">
+        <h1 className="text-2xl text-blue-500 sm:text-3xl md:text-4xl font-bold ">
+          Table Data
+        </h1>
       </div>
 
-      <div className="flex justify-between items-center gap-4 mb-6 flex-wrap">
+      <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 mb-6">
         <input
           type="text"
-          className="border border-gray-300 rounded-lg px-4 py-2 w-full max-w-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="w-full sm:max-w-sm px-4 py-2 text-green-500 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Search or enter data"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
+
         <button
-          className="px-6 py-2 rounded-lg bg-green-700 text-white font-semibold shadow-md hover:bg-green-700 transition-all duration-200"
           onClick={() => setSearch("")}
+          className="w-full sm:w-auto px-6 py-2 bg-green-700 text-white rounded-md shadow-md hover:bg-green-800 transition duration-200 font-semibold"
         >
           Reset Data
         </button>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
-          <thead className="bg-gray-200 text-gray-700 uppercase text-sm">
+      <div className="overflow-x-auto  rounded-lg shadow border border-gray-200">
+        <table className="min-w-full text-sm md:text-base">
+          <thead className="bg-gray-200 text-gray-700 uppercase text-xs sm:text-sm">
             <tr>
-              <th className="p-4 text-center">Id</th>
-              <th className="p-4 text-center">Title</th>
-              <th className="p-4 text-center">Price</th>
-              <th className="p-4 text-center">Description</th>
+              <th className="px-4 py-3 text-center whitespace-nowrap">Id</th>
+              <th className="px-4 py-3 text-center whitespace-nowrap">Title</th>
+              <th className="px-4 py-3 text-center whitespace-nowrap">Price</th>
+              <th className="px-4 py-3 text-center whitespace-nowrap">
+                Description
+              </th>
             </tr>
           </thead>
-          {loading ? (
-            <>
-              <tr className="flex justify-center">
-                <td className="text-lg font-semibold" colSpan={2}>
+          <tbody>
+            {loading ? (
+              <tr>
+                <td
+                  colSpan="4"
+                  className="text-center py-6 text-gray-600 text-base"
+                >
                   Loading...
                 </td>
               </tr>
-            </>
-          ) : (
-            <>
-              {filterData.map((item) => (
-                <tbody key={item.id}>
-                  <tr className="even:bg-gray-100 hover:bg-gray-50 transition divide divide-y">
-                    <td className="p-4 text-center">{item.id}</td>
-                    <td className="p-4 text-center">{item.title}</td>
-                    <td className="p-4 text-center">{item.price}</td>
-                    <td className="p-4 text-center">{item.description}</td>
-                  </tr>
-                </tbody>
-              ))}
-            </>
-          )}
+            ) : (
+              filterData.map((item) => (
+                <tr
+                  key={item.id}
+                  className=" transition-colors"
+                >
+                  <td className="px-4 py-3 text-center">{item.id}</td>
+                  <td className="px-4 py-3 text-center">{item.title}</td>
+                  <td className="px-4 py-3 text-center">{item.price}</td>
+                  <td className="px-4 py-3 text-center">{item.description}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
         </table>
       </div>
-      <div className="flex justify-center my-3 cursor-pointer">
+
+      <div className="mt-6 flex justify-center">
         <Pagination
           activePage={currentPage}
           itemsCountPerPage={itemsPerPage}
           totalItemsCount={data?.length}
-          pageRangeDisplayed={5}
+          pageRangeDisplayed={3}
           onChange={handlePageChange}
-          itemClass="sm:px-4 px-3  py-2 border border-gray-500  sm:text-md text-sm rounded-md mr-1"
-          linkClass=""
+          itemClass="px-3 py-2 border border-gray-400 rounded-md text-sm sm:text-base mx-1"
           activeClass="bg-blue-600 text-white"
-          activeLinkClass=""
           prevPageText="<"
           nextPageText=">"
-          innerClass="flex"
+          innerClass="flex flex-wrap justify-center"
         />
       </div>
     </div>

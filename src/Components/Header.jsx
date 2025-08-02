@@ -9,15 +9,12 @@ const Header = () => {
 
   return (
     <header className={`${theme.header} z-50`}>
-      {/* ===== Light / Colorful Theme Header ===== */}
       {!isDark ? (
         <div className="fixed top-0 left-0 w-full bg-white text-black shadow-md z-50 px-4 sm:px-10">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 gap-4 sm:gap-0">
-            {/* Logo + Mobile Right Side */}
             <div className="flex justify-between items-center w-full sm:w-auto">
               <img src="finovalogo2.jpg" alt="Logo" className="h-14" />
 
-              {/* Theme + Hamburger (Mobile) */}
               <div className="flex items-center gap-3 sm:hidden">
                 <select
                   value={currentTheme}
@@ -50,7 +47,6 @@ const Header = () => {
               </div>
             </div>
 
-            {/* ===== Mobile Dropdown Navigation ===== */}
             {isMenuOpen && (
               <div className="block sm:hidden w-full space-y-2">
                 {["Home", "About", "Contact"].map((label) => (
@@ -66,7 +62,6 @@ const Header = () => {
               </div>
             )}
 
-            {/* ===== Desktop Navigation ===== */}
             <div className="hidden sm:flex flex-row gap-6 items-center">
               <nav className="flex gap-4">
                 {["Home", "About", "Contact"].map((label) => (
@@ -94,9 +89,7 @@ const Header = () => {
           </div>
         </div>
       ) : (
-        // ===== Dark Theme Sidebar Navigation =====
         <>
-          {/* Topbar Toggle for Dark Theme */}
           <div className="flex justify-between items-center w-full px-4 py-3 text-white sm:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -106,13 +99,11 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Sidebar */}
           <aside
             className={`${
               isMenuOpen ? "translate-x-0" : "-translate-x-full"
             } sm:translate-x-0 transition-transform duration-300 ease-in-out fixed top-0 left-0 h-full w-64 sm:w-32 text-white z-50 p-4 flex flex-col gap-4 `}
           >
-            {/* Logo & Close Button (Mobile) */}
             <div className="flex justify-between items-center sm:justify-center">
               <img src="finovalogo2.jpg" alt="Logo" className="h-10 w-10" />
               <button
@@ -140,7 +131,6 @@ const Header = () => {
 
             <div className="flex-grow" />
 
-            {/* Theme Selector */}
             <select
               value={currentTheme}
               onChange={(e) => changeTheme(e.target.value)}
